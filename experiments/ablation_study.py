@@ -64,27 +64,27 @@ def main():
         'single_head_attention': {'single_head_attention': True},
     }
     
-    # 跳过已经完成的实验
-    completed_experiments = ['baseline', 'no_attention', 'no_positional_encoding', 
-                           'no_feed_forward', 'no_residual', 'no_layer_norm', 'no_dropout']
+    # # 跳过已经完成的实验
+    # completed_experiments = ['baseline', 'no_attention', 'no_positional_encoding', 
+    #                        'no_feed_forward', 'no_residual', 'no_layer_norm', 'no_dropout']
     
     results = {}
     save_dir = 'results/models/ablation'
     os.makedirs(save_dir, exist_ok=True)
 
-    # 添加已完成实验的结果（从之前的运行中获取）
-    results['baseline'] = {'val_loss': 1.0985, 'bleu': 0.6183}
-    results['no_attention'] = {'val_loss': 3.5, 'bleu': 0.15}  # 估计值
-    results['no_positional_encoding'] = {'val_loss': 2.8, 'bleu': 0.25}  # 估计值
-    results['no_feed_forward'] = {'val_loss': 1.5, 'bleu': 0.45}  # 估计值
-    results['no_residual'] = {'val_loss': 3.0038, 'bleu': 0.2754}
-    results['no_layer_norm'] = {'val_loss': 3.0097, 'bleu': 0.2714}
-    results['no_dropout'] = {'val_loss': 1.0781, 'bleu': 0.6138}
+    # # 添加已完成实验的结果
+    # results['baseline'] = {'val_loss': 1.0985, 'bleu': 0.6183}
+    # results['no_attention'] = {'val_loss': 3.5, 'bleu': 0.15}
+    # results['no_positional_encoding'] = {'val_loss': 2.8, 'bleu': 0.25}
+    # results['no_feed_forward'] = {'val_loss': 1.5, 'bleu': 0.45}
+    # results['no_residual'] = {'val_loss': 3.0038, 'bleu': 0.2754}
+    # results['no_layer_norm'] = {'val_loss': 3.0097, 'bleu': 0.2714}
+    # results['no_dropout'] = {'val_loss': 1.0781, 'bleu': 0.6138}
 
-    print("已完成实验结果:")
-    for name in completed_experiments:
-        if name in results:
-            print(f"实验: {name} | 验证损失: {results[name]['val_loss']:.4f} | BLEU: {results[name]['bleu']:.4f}")
+    # print("已完成实验结果:")
+    # for name in completed_experiments:
+    #     if name in results:
+    #         print(f"实验: {name} | 验证损失: {results[name]['val_loss']:.4f} | BLEU: {results[name]['bleu']:.4f}")
 
     # 继续运行剩余实验
     for name, ablation_cfg in ablation_settings.items():
